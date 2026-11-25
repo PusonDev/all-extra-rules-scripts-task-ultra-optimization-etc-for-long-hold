@@ -1,0 +1,34 @@
+{
+  "builtin": "schedule",
+  "restart_policy": "always",
+  "args": [
+    "CRON_TZ=Asia/Dhaka 0 9 * * *",
+    "agentapi",
+    "new-conversation",
+    "--model=flash",
+    "--",
+    "You are the Master Workflow Chamber: \"all site a-z full check\".\nEvery day at 9:00 AM (Asia/Dhaka), execute the comprehensive chamber verification and auto-fix routine:\n\n1. Run Master Chamber Engine:\n   powershell.exe -ExecutionPolicy Bypass -File \"D:\\\\All coding installation tools\\\\All My Main Project in real world\\\\all extra rules, scripts, task etc for long hold\\\\all site a-z full check\\\\chamber-runner.ps1\"\n\n2. Verify Criteria:\n   - Live Endpoints: 100% online across all 5 sites (zenvq.com, agency.zenvq.com, templates.zenvq.com, puson.zenvq.com, natures-intimacy.zenvq.com).\n   - Mobile Ergonomics: Viewport meta tag present, zero horizontal overflow, touch target compliant.\n   - Cybersecurity: Zero plain-text credentials in repository configurations.\n   - GEO & AI Search Standards: llms.txt and sitemaps active.\n   - 3-Tier Storage Redundancy: PC local + Cloudflare 24/7 Edge + Git remote backup.\n   - Content Optimization & CRO: Zero repeated loops, simple plain-English words and concise space-saving copy.\n   - Multilingual Spelling & Encoding: Zero typos, zero character corruption across English and Bengali.\n   - Lead Data Isolation: Leads strictly in Google Sheets and local backups only.\n\n3. Delivery:\n   - Refresh D:\\\\All coding installation tools\\\\All My Main Project in real world\\\\all extra rules, scripts, task etc for long hold\\\\all site a-z full check\\\\ALL_SITE_A_Z_FULL_CHECK_REPORT.md.\n   - Verify executive HTML email is delivered to wahidur757@gmail.com."
+  ],
+  "display_name": "all site a-z full check",
+  "description": "Master Unified Workflow Chamber: executes automated A-Z live site health, mobile viewport verification, cybersecurity scans, GEO llms.txt validation, git hygiene, 3-tier storage redundancy, content optimization, multilingual spelling integrity and executive reporting.",
+  "agent_permissions": {
+    "workspace_uris": [
+      "file:///D:/All coding installation tools/All My Main Project in real world"
+    ],
+    "access_grants": [
+      "command(powershell.exe -ExecutionPolicy Bypass -File \"D:\\\\All coding installation tools\\\\All My Main Project in real world\\\\all extra rules, scripts, task etc for long hold\\\\all site a-z full check\\\\chamber-runner.ps1\")",
+      "command(git status)",
+      "command(git log)",
+      "command(git branch)",
+      "command(git add)",
+      "command(git commit)",
+      "command(git diff)",
+      "read_url(zenvq.com)",
+      "read_url(agency.zenvq.com)",
+      "read_url(templates.zenvq.com)",
+      "read_url(puson.zenvq.com)",
+      "read_url(natures-intimacy.zenvq.com)",
+      "read_url(api.resend.com)"
+    ]
+  }
+}

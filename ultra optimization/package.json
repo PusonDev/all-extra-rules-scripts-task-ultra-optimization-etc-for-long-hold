@@ -1,0 +1,28 @@
+{
+  "name": "zenvq-ultra-optimization-engine",
+  "version": "1.2.0",
+  "description": "Autonomous Multi-Vector A-Z Audit, 24/7 Sentinel & TG-to-Antigravity Bridge for the ZenVQ Ecosystem",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "audit": "node cli.mjs",
+    "report": "node cli.mjs --html",
+    "sentinel": "node sentinel-24-7.mjs --daemon",
+    "bridge": "node tg-to-ag-bridge.mjs"
+  },
+  "keywords": [
+    "zenvq",
+    "seo",
+    "geo",
+    "aeo",
+    "cybersecurity",
+    "owasp",
+    "performance",
+    "audit-api",
+    "telegram-bridge",
+    "antigravity"
+  ],
+  "author": "ZenVQ Engineering Foundry",
+  "license": "UNLICENSED"
+}

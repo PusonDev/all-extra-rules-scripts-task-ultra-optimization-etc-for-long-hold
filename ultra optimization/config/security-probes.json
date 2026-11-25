@@ -1,0 +1,94 @@
+{
+  "sensitive_file_probes": [
+    { "path": "/.env", "description": "Environment variables file" },
+    { "path": "/.env.local", "description": "Local environment variables" },
+    { "path": "/.env.production", "description": "Production environment variables" },
+    { "path": "/.git/config", "description": "Git repository configuration" },
+    { "path": "/.git/HEAD", "description": "Git repository HEAD pointer" },
+    { "path": "/wp-login.php", "description": "WordPress login exposure probe" },
+    { "path": "/wp-config.php", "description": "WordPress config leak probe" },
+    { "path": "/phpinfo.php", "description": "PHP info leak probe" },
+    { "path": "/backup.sql", "description": "Database backup dump leak" },
+    { "path": "/database.sqlite", "description": "SQLite raw database file" },
+    { "path": "/.vscode/settings.json", "description": "VSCode editor secrets leak" },
+    { "path": "/server-status", "description": "Apache/Nginx status handler probe" },
+    { "path": "/debug", "description": "Framework debug panel probe" },
+    { "path": "/actuator/health", "description": "Spring actuator exposure probe" }
+  ],
+  "owasp_headers": [
+    {
+      "key": "strict-transport-security",
+      "required": true,
+      "min_max_age": 31536000,
+      "require_subdomains": true,
+      "description": "HTTP Strict Transport Security (HSTS)"
+    },
+    {
+      "key": "x-content-type-options",
+      "required": true,
+      "expected_value": "nosniff",
+      "description": "MIME-Type Sniffing Protection"
+    },
+    {
+      "key": "x-frame-options",
+      "required": true,
+      "acceptable_values": ["DENY", "SAMEORIGIN"],
+      "description": "Clickjacking Defense"
+    },
+    {
+      "key": "x-xss-protection",
+      "required": false,
+      "description": "Legacy Reflected XSS Filter"
+    },
+    {
+      "key": "referrer-policy",
+      "required": true,
+      "acceptable_values": ["strict-origin-when-cross-origin", "origin-when-cross-origin", "no-referrer"],
+      "description": "Referrer Information Exposure Control"
+    },
+    {
+      "key": "permissions-policy",
+      "required": true,
+      "description": "Browser Hardware & Sensor Permissions Lock"
+    }
+  ],
+  "banned_ai_jargon": [
+    "synergistic paradigm",
+    "holistic bespoke turnkey",
+    "hyper-scalable multifaceted ecosystem",
+    "unprecedented revolutionary disruptive synergy",
+    "transformative omnichannel synergy",
+    "bespoke cutting-edge paradigm"
+  ],
+  "prohibited_oxford_comma_patterns": [
+    ", and ",
+    ", And ",
+    ", AND ",
+    ", & "
+  ],
+  "mojibake_patterns": [
+    "â€",
+    "Ã©",
+    "â€”",
+    "à§³",
+    "Ã ",
+    "â€™"
+  ],
+  "agency_contact_restrictions": {
+    "prohibited_personal_emails": [
+      "wahidur757@gmail.com",
+      "puson@gmail.com"
+    ],
+    "required_official_channels": [
+      "onlyfordigitalwork@gmail.com",
+      "t.me/Zenvq_Lead_bot",
+      "8801629944975"
+    ]
+  },
+  "lead_isolation_forbidden_files_in_git": [
+    "latest_leads_backup.xlsx",
+    "dedup-vault.json",
+    "usage-ledger.json",
+    "leads.csv"
+  ]
+}

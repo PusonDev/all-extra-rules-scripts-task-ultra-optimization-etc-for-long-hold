@@ -1,0 +1,15 @@
+{
+  "name": "zenvq-laser-edge-api",
+  "version": "2.0.0",
+  "description": "ZenVQ Universal Laser Cursor Edge API and CDN Delivery Service",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "wrangler": "^3.111.0"
+  }
+}

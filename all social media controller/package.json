@@ -1,0 +1,29 @@
+{
+  "name": "zenvq-social-dispatcher",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "100% Free 24/7 Social Media Dispatcher on Cloudflare Workers with Cron Triggers and KV queue",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "dry-run": "wrangler deploy --dry-run",
+    "test": "node --test scripts/test-dispatch.js",
+    "dispatch": "node scripts/dispatch.js"
+  },
+  "keywords": [
+    "cloudflare-worker",
+    "social-media-automation",
+    "linkedin",
+    "meta",
+    "instagram",
+    "telegram",
+    "twitter",
+    "cron-trigger"
+  ],
+  "author": "ZenVQ Foundry",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.114.1"
+  }
+}

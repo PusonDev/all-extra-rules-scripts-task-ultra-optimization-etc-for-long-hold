@@ -1,0 +1,170 @@
+{
+  "chamber_name": "all site a-z full check",
+  "version": "2.5.0",
+  "updated_at": "2026-11-25T13:13:00+06:00",
+  "description": "Master Unified Workflow Chamber for ZenVQ Ecosystem: A-Z Site Health, Mobile Ergonomics, Cybersecurity, GEO AI Search, 3-Tier Storage Redundancy (PC + Cloudflare + Git), Content Optimization & CRO, Multilingual Spelling Integrity and Automated Repair.",
+  "storage_redundancy_policy": {
+    "tier_1_pc_storage": {
+      "enabled": true,
+      "description": "Primary local source of truth on disk",
+      "projects_root": "D:\\All coding installation tools\\All My Main Project in real world",
+      "chamber_root": "D:\\All coding installation tools\\All My Main Project in real world\\all extra rules, scripts, task etc for long hold\\all site a-z full check"
+    },
+    "tier_2_cloudflare_edge": {
+      "enabled": true,
+      "description": "24/7 Always-on edge cloud deployment running even if PC is off",
+      "provider": "Cloudflare Pages & Workers",
+      "verified_projects": [
+        "zenvq",
+        "zenvq-agency",
+        "puson-dev",
+        "zenvq-tools",
+        "zenvq-templates",
+        "boutique-templates",
+        "drjerin",
+        "rafij",
+        "saif",
+        "kawsar",
+        "zenvq-biodata-portfolio",
+        "natures-intimacy",
+        "zenvq-suggests"
+      ]
+    },
+    "tier_3_git_backup": {
+      "enabled": true,
+      "description": "Distributed cloud source backup across GitHub remotes",
+      "auto_push_verified_branches": true,
+      "require_clean_working_tree": true
+    },
+    "lead_data_isolation": {
+      "enabled": true,
+      "description": "Collected prospect data strictly stored only in Google Sheets and local backup - never in Git",
+      "google_sheet_id": "1DTZIHaezjqg69wmaJh9UFhORhZU-hfsI4CrIIDZnxCk",
+      "git_tracking_prohibited": true
+    }
+  },
+  "criteria_matrix": {
+    "live_endpoints": {
+      "enabled": true,
+      "max_latency_ms": 1500,
+      "expected_status": 200,
+      "targets": [
+        { "name": "ZenVQ Ecosystem Main", "url": "https://zenvq.com", "critical": true },
+        { "name": "ZenVQ Agency Hub", "url": "https://agency.zenvq.com", "critical": true },
+        { "name": "ZenVQ Founder Authority", "url": "https://puson.zenvq.com", "critical": true },
+        { "name": "ZenVQ Developer Tools", "url": "https://tools.zenvq.com", "critical": true },
+        { "name": "ZenVQ Templates Showcase", "url": "https://templates.zenvq.com", "critical": true },
+        { "name": "Jennah Boutique Platform", "url": "https://boutique-templates.zenvq.com", "critical": true },
+        { "name": "Dental Point Clinical Portal", "url": "https://drjerin.zenvq.com", "critical": true },
+        { "name": "Rafij Visual Portfolio", "url": "https://rafij.zenvq.com", "critical": true },
+        { "name": "Saif Portfolio", "url": "https://saif.zenvq.com", "critical": true },
+        { "name": "Kawsar Portfolio", "url": "https://kawsar.zenvq.com", "critical": false },
+        { "name": "Nature's Intimacy", "url": "https://natures-intimacy.zenvq.com", "critical": true },
+        { "name": "Ruqyah Spiritual Vault", "url": "https://natures-intimacy.zenvq.com/ruqyah", "critical": true },
+        { "name": "ZenVQ Suggest Engine", "url": "https://suggests.zenvq.com/en", "critical": true },
+        { "name": "ZenVQ Biodata Studio", "url": "https://zenvq-biodata-portfolio.pages.dev", "critical": false }
+      ]
+    },
+    "mobile_ergonomics": {
+      "enabled": true,
+      "viewport_meta_required": true,
+      "horizontal_overflow_tolerance_px": 0,
+      "min_touch_target_px": 44,
+      "checks": [
+        "Viewport meta presence",
+        "Zero horizontal scroll overflow (<=100vw)",
+        "Minimum 44px touch target compliance"
+      ]
+    },
+    "cybersecurity_and_secrets": {
+      "enabled": true,
+      "prohibit_plaintext_git_tokens": true,
+      "prohibit_leaked_env_secrets": true,
+      "max_allowed_critical_vulns": 0,
+      "checks": [
+        "Zero plain-text PAT tokens in .git/config",
+        "Zero leaked API keys in source files or examples",
+        "Safe Windows Credential Locker (wincred) integration"
+      ]
+    },
+    "content_optimization_and_cro": {
+      "enabled": true,
+      "two_way_sync_enabled": true,
+      "zero_unnecessary_repetition": true,
+      "eliminate_heavy_jargon": true,
+      "space_efficient_concise_copy": true,
+      "preserve_core_deliverables_and_slas": true,
+      "checks": [
+        "Detect and eliminate duplicate phrases, looping marketing slogans and repeated text blocks",
+        "Replace heavy, pretentious vocabulary with simple, clear and client-friendly words",
+        "Condense bloated paragraphs into tight, scannable copy to save space and respect user attention",
+        "Preserve core business value: 7 Squads, 15-Minute SLA, 3-Person Pods and verified metrics",
+        "Enforce two-way rule synchronization across all 11 ecosystem sites and persistent memory"
+      ]
+    },
+    "linguistic_and_spelling_integrity": {
+      "enabled": true,
+      "zero_spelling_mistakes": true,
+      "zero_mojibake_encoding_errors": true,
+      "multilingual_typo_inspection": true,
+      "checks": [
+        "Daily live scan of all websites for spelling mistakes, typos and grammatical errors",
+        "Detect and eliminate character encoding corruptions (mojibake) across all languages",
+        "Instant automated correction in repository source code upon typo detection"
+      ]
+    },
+    "geo_ai_search_standards": {
+      "enabled": true,
+      "required_files": [
+        { "domain": "agency.zenvq.com", "path": "/llms.txt" },
+        { "domain": "agency.zenvq.com", "path": "/llms-full.txt" },
+        { "domain": "agency.zenvq.com", "path": "/robots.txt" },
+        { "domain": "agency.zenvq.com", "path": "/sitemap.xml" },
+        { "domain": "zenvq.com", "path": "/llms.txt" },
+        { "domain": "zenvq.com", "path": "/llms-full.txt" },
+        { "domain": "zenvq.com", "path": "/robots.txt" },
+        { "domain": "zenvq.com", "path": "/sitemap.xml" }
+      ],
+      "ai_bots_allowed": ["GPTBot", "ClaudeBot", "PerplexityBot", "Applebot"]
+    },
+    "codebase_and_git_hygiene": {
+      "enabled": true,
+      "auto_fix_enabled": true,
+      "auto_commit_prefix": "chore(auto-maintenance): stage and synchronize verified files [skip ci]",
+      "build_verification_repo": "ZenVQ-Agency",
+      "repositories": [
+        "ZenVQ-Agency",
+        "ZenVQ-EcoSystem",
+        "Puson-Dev",
+        "ZenVQ-Tools",
+        "ZenVQ-Tools\\03-Templates-Hub",
+        "ZenVQ-Tools\\03-Templates-Hub\\Boutique-Templates",
+        "ZenVQ-Tools\\03-Templates-Hub\\Dr Jerin-Dental Point",
+        "ZenVQ-Tools\\03-Templates-Hub\\Rafij-portfolio",
+        "ZenVQ-Tools\\03-Templates-Hub\\Saif-portfolio",
+        "ZenVQ-Tools\\03-Templates-Hub\\Kawsar.design",
+        "Natures-Intimacy",
+        "ZenVQ-Suggests",
+        "all extra rules, scripts, task etc for long hold\\zenvq-scripting-email-collection"
+      ]
+    },
+    "cloudflare_scheduled_worker": {
+      "enabled": true,
+      "worker_name": "zenvq-all-site-guardian",
+      "cron_schedule": "0 3 * * *",
+      "timezone_reference": "09:00 AM Asia/Dhaka (03:00 UTC)",
+      "live_url": "https://zenvq-all-site-guardian.onlyfordigitalwork.workers.dev",
+      "json_endpoint": "https://zenvq-all-site-guardian.onlyfordigitalwork.workers.dev/json",
+      "free_tier_cost": "$0.00 (100% Free Forever)",
+      "autonomous_pc_off_execution": true
+    },
+    "notification_pipeline": {
+      "enabled": true,
+      "primary_email": "wahidur757@gmail.com",
+      "backup_email": "onlyfordigitalwork@gmail.com",
+      "provider": "Resend API",
+      "from_address": "all-site-a-z-full-check <onboarding@resend.dev>",
+      "subject_template": "🛡️ all site a-z full check: Daily Chamber Report ({date}) — {status}"
+    }
+  }
+}

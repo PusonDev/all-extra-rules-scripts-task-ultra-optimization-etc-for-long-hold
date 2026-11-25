@@ -1,0 +1,11 @@
+{
+  "name": "zenvq-all-site-guardian",
+  "version": "1.0.0",
+  "description": "Cloudflare Scheduled Worker for 24/7 Autonomous ZenVQ Site Health, Mobile Ergonomics, GEO AI Search, Encoding Integrity and Executive Email Reporting",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "sync_timestamp": "2026-11-04T16:58:00+06:00",
+  "source_conversation_id": "6ef72e7b-d0ca-479e-98d0-b67940532f88",
+  "target_conversation_id": "3d421bce-a71a-4676-8cc2-66db3c5e358f",
+  "ecosystem": "ZenVQ Production & Foundry",
+  "live_endpoints": [
+    {
+      "name": "ZenVQ Ecosystem Main",
+      "url": "https://zenvq.com",
+      "status": 200,
+      "type": "Production Web App",
+      "checked": true
+    },
+    {
+      "name": "ZenVQ Agency Hub",
+      "url": "https://agency.zenvq.com",
+      "status": 200,
+      "type": "Production Cloudflare Pages",
+      "checked": true
+    },
+    {
+      "name": "ZenVQ Templates",
+      "url": "https://templates.zenvq.com",
+      "status": 200,
+      "type": "Static Templates Showcase",
+      "checked": true
+    },
+    {
+      "name": "ZenVQ Founder Portfolio (Puson Dev)",
+      "url": "https://puson.zenvq.com",
+      "status": 200,
+      "type": "Founder Authority Portfolio",
+      "checked": true
+    },
+    {
+      "name": "Nature's Intimacy",
+      "url": "https://natures-intimacy.zenvq.com",
+      "status": 200,
+      "type": "Natural Health Portal",
+      "checked": true
+    }
+  ],
+  "repositories": [
+    {
+      "name": "ZenVQ-Agency",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\ZenVQ-Agency",
+      "branch": "master",
+      "remote": "https://github.com/PusonDev/ZenVQ-Agency.git",
+      "build_command": "npm run build",
+      "package_manager": "npm"
+    },
+    {
+      "name": "ZenVQ-EcoSystem",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\ZenVQ-EcoSystem",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/ZenVQ-EcoSystem.git",
+      "build_command": "npm run build",
+      "package_manager": "npm"
+    },
+    {
+      "name": "ZenVQ-Tools",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\ZenVQ-Tools",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/ZenVQ-Tools.git",
+      "build_command": "npm run build",
+      "package_manager": "npm"
+    },
+    {
+      "name": "Puson-Dev",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\Puson-Dev",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/Puson-Dev.git",
+      "package_manager": "static"
+    },
+    {
+      "name": "ZenVQ-Suggests",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\ZenVQ-Suggests",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/ZenVQ-Suggests.git",
+      "package_manager": "npm"
+    },
+    {
+      "name": "Natures-Intimacy",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\Natures-Intimacy",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/Natures-Intimacy.git",
+      "package_manager": "npm"
+    },
+    {
+      "name": "Rafij-portfolio",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\Rafij-portfolio",
+      "branch": "main",
+      "remote": "https://github.com/PusonDev/Rafij-portfolio.git",
+      "package_manager": "static"
+    },
+    {
+      "name": "templetes.zenvq.com",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\templetes.zenvq.com",
+      "branch": "main",
+      "package_manager": "static"
+    },
+    {
+      "name": "zenvq-scripting-email-collection",
+      "path": "D:\\All coding installation tools\\All My Main Project in real world\\zenvq-scripting-email-collection",
+      "branch": "N/A",
+      "package_manager": "npm"
+    }
+  ],
+  "notification_channels": {
+    "primary_email": "wahidur757@gmail.com",
+    "backup_email": "onlyfordigitalwork@gmail.com",
+    "email_provider": "Resend API",
+    "resend_from": "onboarding@resend.dev",
+    "delivery_status": "Tested & Active"
+  },
+  "local_automation": {
+    "powershell_runner": "C:\\All my stuff out from windows\\Ai Agents\\All data for antigravity\\config\\scripts\\daily-check-runner.ps1",
+    "windows_task_name": "ZenVQ-Daily-Guardian",
+    "start_when_available": true,
+    "sidecar_id": "daily-check"
+  },
+  "cloud_24_7_blueprint": {
+    "platform": "GitHub Actions (Free Tier: 2000 mins/month)",
+    "schedule": "0 3 * * *",
+    "actions": [
+      "Endpoint Health Check (curl/fetch)",
+      "Mobile Viewport & Overflow Audit",
+      "Dependency Security Scan (npm audit)",
+      "Safe Auto-Fix Commit & Push",
+      "Email Dispatch via Resend API / Telegram Notification"
+    ]
+  }
+}

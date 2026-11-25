@@ -1,0 +1,19 @@
+name = "zenvq-social-dispatcher"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+# KV namespace for scheduled queue, retry state and 30-day history logs
+# Run: npx wrangler kv namespace create SOCIAL_QUEUE
+# Replace the placeholder id below with your generated KV namespace id:
+[[kv_namespaces]]
+binding = "SOCIAL_QUEUE"
+id = "69e3916a21c7407a85444e2bdb515769"
+
+# Cron trigger for 24/7 queue processing (runs every 5 minutes)
+# Works completely offline even when your PC is turned off
+[triggers]
+crons = ["*/5 * * * *"]
+
+[vars]
+ENVIRONMENT = "production"
+MAX_RETRY_ATTEMPTS = "3"

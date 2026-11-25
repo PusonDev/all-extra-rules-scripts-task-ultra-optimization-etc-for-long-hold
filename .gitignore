@@ -1,0 +1,19 @@
+# Dependencies & build caches
+node_modules/
+.next/
+dist/
+out/
+.wrangler/
+
+# Environment & secrets (keep examples)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Logs & OS clutter
+logs/
+*.log
+.DS_Store
+Thumbs.db

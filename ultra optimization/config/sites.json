@@ -1,0 +1,104 @@
+{
+  "ecosystem": "ZenVQ Ecosystem",
+  "version": "1.0.0",
+  "updated_at": "2026-11-16T18:00:00+06:00",
+  "default_max_latency_ms": 1500,
+  "sites": [
+    {
+      "id": "zenvq-core",
+      "name": "ZenVQ Core Hub",
+      "domain": "zenvq.com",
+      "url": "https://zenvq.com",
+      "cloudflare_pages_target": "zenvq.pages.dev",
+      "repo_name": "ZenVQ-EcoSystem",
+      "theme": "dark_luxury",
+      "critical": true,
+      "requires_llms_txt": true,
+      "seo_isolated": false
+    },
+    {
+      "id": "zenvq-agency",
+      "name": "ZenVQ Agency",
+      "domain": "agency.zenvq.com",
+      "url": "https://agency.zenvq.com",
+      "cloudflare_pages_target": "zenvq-agency.pages.dev",
+      "repo_name": "ZenVQ-Agency",
+      "theme": "dark_luxury",
+      "critical": true,
+      "requires_llms_txt": true,
+      "seo_isolated": false
+    },
+    {
+      "id": "zenvq-templates",
+      "name": "ZenVQ Templates",
+      "domain": "templates.zenvq.com",
+      "url": "https://templates.zenvq.com",
+      "cloudflare_pages_target": "zenvq-templates.pages.dev",
+      "repo_name": "ZenVQ-Tools\\03-Templates-Hub",
+      "theme": "dark_luxury",
+      "critical": true,
+      "requires_llms_txt": false,
+      "seo_isolated": false
+    },
+    {
+      "id": "puson-dev",
+      "name": "Puson Dev",
+      "domain": "puson.zenvq.com",
+      "url": "https://puson.zenvq.com",
+      "cloudflare_pages_target": "puson-dev.pages.dev",
+      "repo_name": "Puson-Dev",
+      "theme": "dark_luxury",
+      "critical": true,
+      "requires_llms_txt": false,
+      "seo_isolated": false
+    },
+    {
+      "id": "natures-intimacy",
+      "name": "Nature's Intimacy",
+      "domain": "natures-intimacy.zenvq.com",
+      "url": "https://natures-intimacy.zenvq.com",
+      "cloudflare_pages_target": "natures-intimacy.pages.dev",
+      "repo_name": "Natures-Intimacy",
+      "theme": "botanical_cream",
+      "critical": true,
+      "requires_llms_txt": false,
+      "seo_isolated": true
+    },
+    {
+      "id": "zenvq-tools",
+      "name": "ZenVQ Tools",
+      "domain": "tools.zenvq.com",
+      "url": "https://tools.zenvq.com",
+      "cloudflare_pages_target": "zenvq-tools.pages.dev",
+      "repo_name": "ZenVQ-Tools\\01-OneApp-Ecosystem\\01-Apps\\oneapp-website",
+      "theme": "dark_minimal",
+      "critical": false,
+      "requires_llms_txt": false,
+      "seo_isolated": false
+    },
+    {
+      "id": "zenvq-suggests",
+      "name": "ZenVQ Suggests",
+      "domain": "suggests.zenvq.com",
+      "url": "https://suggests.zenvq.com",
+      "cloudflare_pages_target": "zenvq-suggests.pages.dev",
+      "repo_name": "ZenVQ-Suggests",
+      "theme": "dark_saas",
+      "critical": false,
+      "requires_llms_txt": false,
+      "seo_isolated": false
+    },
+    {
+      "id": "rafij-portfolio",
+      "name": "Rafij Portfolio",
+      "domain": "rafij.zenvq.com",
+      "url": "https://rafij.zenvq.com",
+      "cloudflare_pages_target": "rafij.pages.dev",
+      "repo_name": "Rafij-portfolio",
+      "theme": "dark_luxury",
+      "critical": false,
+      "requires_llms_txt": false,
+      "seo_isolated": false
+    }
+  ]
+}

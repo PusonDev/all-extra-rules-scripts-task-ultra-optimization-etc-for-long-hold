@@ -1,0 +1,25 @@
+{
+  "name": "zenvq-laser-cursor",
+  "version": "2.0.0",
+  "description": "ZenVQ Universal Precision Laser Cursor, Micro-Sparks & Cloudflare Edge API Hub",
+  "main": "core/zenvq-laser.js",
+  "module": "core/zenvq-laser.js",
+  "types": "components/LaserCursor.tsx",
+  "scripts": {
+    "verify": "powershell -ExecutionPolicy Bypass -File scripts/verify-laser.ps1",
+    "inject-all": "powershell -ExecutionPolicy Bypass -File scripts/inject-all-sites.ps1",
+    "worker:dev": "cd cloudflare-worker && wrangler dev",
+    "worker:deploy": "cd cloudflare-worker && wrangler deploy"
+  },
+  "keywords": [
+    "laser-cursor",
+    "canvas-cursor",
+    "micro-sparks",
+    "hud-reticle",
+    "framer-motion",
+    "nextjs",
+    "zenvq"
+  ],
+  "author": "ZenVQ Ecosystem",
+  "license": "MIT"
+}

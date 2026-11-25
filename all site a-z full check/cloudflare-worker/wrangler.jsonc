@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "zenvq-all-site-guardian",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "triggers": {
+    "crons": [
+      "0 3 * * *"
+    ]
+  },
+  "services": [
+    {
+      "binding": "LEADS_CRAWLER",
+      "service": "zenvq-leads-crawler"
+    }
+  ],
+  "vars": {
+    "RECIPIENT_EMAIL": "wahidur757@gmail.com",
+    "BACKUP_EMAIL": "onlyfordigitalwork@gmail.com",
+    "TELEGRAM_CHAT_ID": "8930678641"
+  }
+}
