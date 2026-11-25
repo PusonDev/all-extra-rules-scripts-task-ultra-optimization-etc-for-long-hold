@@ -11,6 +11,7 @@ out/
 !.env.example
 *.key
 *.pem
+ultra optimization/config/tg-ag-config.json
 
 # Logs & OS clutter
 logs/
