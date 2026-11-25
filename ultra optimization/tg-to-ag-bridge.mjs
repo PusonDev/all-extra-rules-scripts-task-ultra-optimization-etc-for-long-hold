@@ -5,7 +5,7 @@
  * and ecosystem control worldwide.
  */
 
-import { exec } from 'child_process';
+import { exec, spawn } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -21,6 +21,7 @@ const CONFIG_PATH = path.join(__dirname, 'config', 'tg-ag-config.json');
 const LOG_FILE = path.join(__dirname, 'tg-bridge.log');
 const AGY_BIN = "C:\\All my stuff out from windows\\Ai Agents\\All data for antigravity\\bin\\agy.exe";
 const WORKSPACE_DIR = "d:\\All coding installation tools\\All My Main Project in real world\\all extra rules, scripts, task etc for long hold\\ultra optimization";
+const ALL_PROJECTS_DIR = "D:\\All coding installation tools\\All My Main Project in real world";
 
 // Load dedicated configuration
 let tgConfig = { bot_token: '', authorized_chat_id: '8930678641' };
@@ -48,32 +49,61 @@ function log(msg) {
   }
 }
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 async function sendTelegramMessage(chatId, text, options = {}) {
   if (!BOT_TOKEN) {
     log('Cannot send message: Dedicated TG to AG Bot Token is not configured.');
     return null;
   }
 
-  try {
-    const truncatedText = text.length > 4000 ? text.substring(0, 3990) + '\n\n<i>[Truncated...]</i>' : text;
-
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: truncatedText,
-        parse_mode: options.parse_mode || 'HTML',
-        disable_web_page_preview: true
-      }),
-      signal: AbortSignal.timeout(10000)
-    });
-    const data = await res.json();
-    return data.ok ? data.result : null;
-  } catch (err) {
-    log(`Failed to send Telegram message: ${err.message}`);
-    return null;
+  const MAX_LEN = 3900;
+  const chunks = [];
+  let remaining = String(text);
+  while (remaining.length > MAX_LEN) {
+    let splitIdx = remaining.lastIndexOf('\n', MAX_LEN);
+    if (splitIdx < MAX_LEN * 0.5) splitIdx = MAX_LEN;
+    chunks.push(remaining.slice(0, splitIdx));
+    remaining = remaining.slice(splitIdx).replace(/^\n+/, '');
   }
+  if (remaining.length > 0 || chunks.length === 0) {
+    chunks.push(remaining);
+  }
+
+  let lastResult = null;
+  for (const chunk of chunks) {
+    try {
+      const payload = {
+        chat_id: chatId,
+        text: chunk,
+        disable_web_page_preview: true
+      };
+      if (options.parse_mode !== '') {
+        payload.parse_mode = options.parse_mode || 'HTML';
+      }
+
+      const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(10000)
+      });
+      const data = await res.json();
+      if (!data.ok) {
+        log(`Telegram API error: ${data.description || JSON.stringify(data)}`);
+      } else {
+        lastResult = data.result;
+      }
+    } catch (err) {
+      log(`Failed to send Telegram message: ${err.message}`);
+    }
+  }
+  return lastResult;
 }
 
 async function deleteTelegramMessage(chatId, messageId) {
@@ -93,9 +123,9 @@ async function deleteTelegramMessage(chatId, messageId) {
 
 function executeShellCommand(cmd) {
   return new Promise((resolve) => {
-    exec(cmd, { cwd: WORKSPACE_DIR, timeout: 30000, maxBuffer: 1024 * 1024 }, (err, stdout, stderr) => {
+    exec(cmd, { cwd: ALL_PROJECTS_DIR, shell: 'powershell.exe', timeout: 120000, maxBuffer: 1024 * 1024 * 4 }, (err, stdout, stderr) => {
       if (err) {
-        resolve({ ok: false, output: stderr || err.message });
+        resolve({ ok: false, output: stderr || stdout || err.message });
       } else {
         resolve({ ok: true, output: stdout || stderr || 'Command executed successfully with no output.' });
       }
@@ -105,15 +135,57 @@ function executeShellCommand(cmd) {
 
 function executeAgyPrompt(prompt) {
   return new Promise((resolve) => {
-    const safePrompt = prompt.replace(/"/g, '\\"');
-    const cmd = `"${AGY_BIN}" --dangerously-skip-permissions --print "${safePrompt}"`;
-    log(`Executing Antigravity prompt: ${prompt.substring(0, 60)}...`);
+    log(`Executing Antigravity prompt: ${prompt.substring(0, 80)}...`);
 
-    exec(cmd, { cwd: WORKSPACE_DIR, timeout: 60000, maxBuffer: 1024 * 1024 * 2 }, (err, stdout, stderr) => {
-      if (err) {
-        resolve({ ok: false, output: stderr || err.message });
+    const args = [
+      '--dangerously-skip-permissions',
+      '--mode', 'auto',
+      '--add-dir', ALL_PROJECTS_DIR,
+      '--print',
+      prompt
+    ];
+
+    const child = spawn(AGY_BIN, args, {
+      cwd: ALL_PROJECTS_DIR,
+      windowsHide: true,
+      stdio: ['ignore', 'pipe', 'pipe']
+    });
+
+    let stdout = '';
+    let stderr = '';
+    let timedOut = false;
+
+    const timer = setTimeout(() => {
+      timedOut = true;
+      child.kill('SIGTERM');
+    }, 300000);
+
+    child.stdout.on('data', (chunk) => {
+      stdout += chunk.toString('utf8');
+    });
+
+    child.stderr.on('data', (chunk) => {
+      stderr += chunk.toString('utf8');
+    });
+
+    child.on('error', (err) => {
+      clearTimeout(timer);
+      log(`Antigravity spawn error: ${err.message}`);
+      resolve({ ok: false, output: err.message });
+    });
+
+    child.on('close', (code) => {
+      clearTimeout(timer);
+      if (timedOut) {
+        log('Antigravity prompt timed out after 5 minutes.');
+        resolve({ ok: false, output: (stdout.trim() ? stdout.trim() + '\n\n' : '') + '[Timed out after 5 minutes]' });
+        return;
+      }
+      log(`Antigravity finished with exit code ${code} (stdout=${stdout.length} bytes, stderr=${stderr.length} bytes)`);
+      if (code !== 0 && !stdout.trim()) {
+        resolve({ ok: false, output: stderr.trim() || `Exited with code ${code}` });
       } else {
-        resolve({ ok: true, output: stdout.trim() || 'Agent completed task with zero output.' });
+        resolve({ ok: true, output: stdout.trim() || stderr.trim() || 'Agent completed task with zero output.' });
       }
     });
   });
@@ -272,20 +344,20 @@ async function handleIncomingMessage(msg) {
   // 7. /cmd <command>
   if (text.startsWith('/cmd ')) {
     const cmdStr = text.replace('/cmd ', '').trim();
-    await sendTelegramMessage(chatId, `⚡ <i>Running: <code>${cmdStr}</code>...</i>`);
+    await sendTelegramMessage(chatId, `⚡ <i>Running: <code>${escapeHtml(cmdStr)}</code>...</i>`);
     const result = await executeShellCommand(cmdStr);
-    const outMsg = `<b>Command Output:</b>\n<pre>${result.output}</pre>`;
+    const outMsg = `<b>Command Output:</b>\n<pre>${escapeHtml(result.output)}</pre>`;
     await sendTelegramMessage(chatId, outMsg);
     return;
   }
 
   // 8. /ag <prompt> OR plain text message -> Dispatch to Antigravity AI
   const prompt = text.startsWith('/ag ') ? text.replace('/ag ', '').trim() : text;
-  await sendTelegramMessage(chatId, `🤖 <i>Antigravity processing: "${prompt.substring(0, 50)}..."</i>`);
+  await sendTelegramMessage(chatId, `🤖 <i>Antigravity processing: "${escapeHtml(prompt.substring(0, 50))}..."</i>`);
 
   const agyRes = await executeAgyPrompt(prompt);
   const replyHeader = `🤖 <b>Antigravity Response:</b>\n\n`;
-  await sendTelegramMessage(chatId, replyHeader + agyRes.output, { parse_mode: '' });
+  await sendTelegramMessage(chatId, replyHeader + escapeHtml(agyRes.output));
 }
 
 async function pollTelegramUpdates() {
