@@ -139,7 +139,7 @@ function executeAgyPrompt(prompt) {
 
     const args = [
       '--dangerously-skip-permissions',
-      '--mode', 'auto',
+      '--effort', 'low',
       '--add-dir', ALL_PROJECTS_DIR,
       '--print',
       prompt
